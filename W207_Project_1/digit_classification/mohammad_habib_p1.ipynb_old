@@ -312,15 +312,6 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "ANSWER:\n",
-    "\n",
-    "The digit '9' appears to be the hardest one for the values of k tested. Except for k=3, the digit '3' was the hardest to predict."
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
     "(3) Using k=1, report dev set accuracy for the training set sizes below. Also, measure the amount of time needed for prediction with each training size.\n",
     "\n",
     "- time.time() gives a wall clock value you can use for timing operations"
@@ -413,17 +404,6 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "ANSWER:\n",
-    "\n",
-    "We get an accuracy of 124.3% for n=60000. This is because the prediction is unbounded in linear regression due to the continuous nature of the outcome.\n",
-    "\n",
-    "We need to bound the outcome to a more realistic range i.e. 0 to 1 in this case. We will use the tanh function here which is bounded between -1 to 1. We limited that to 0 to 1 in the code above."
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
     "Fit a 1-NN and output a confusion matrix for the dev data. Use the confusion matrix to identify the most confused pair of digits, and display a few example mistakes.\n",
     "\n",
     "- confusion_matrix() produces a confusion matrix"
@@ -431,7 +411,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 34,
+   "execution_count": 9,
    "metadata": {
     "collapsed": false
    },
@@ -451,7 +431,7 @@
        "       [  0,   0,   0,   0,   0,   0,   0,   0,   0, 106]])"
       ]
      },
-     "execution_count": 34,
+     "execution_count": 9,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -569,7 +549,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 38,
+   "execution_count": 12,
    "metadata": {
     "collapsed": false
    },
@@ -584,20 +564,20 @@
       "           weights='uniform'):\n",
       "              precision    recall  f1-score   support\n",
       "\n",
-      "        0.0       0.91      0.98      0.94        99\n",
-      "        1.0       0.94      0.99      0.96       105\n",
-      "        2.0       0.96      0.79      0.87       102\n",
-      "        3.0       0.80      0.79      0.80        86\n",
-      "        4.0       0.92      0.88      0.90       104\n",
-      "        5.0       0.91      0.81      0.86        91\n",
-      "        6.0       0.94      0.96      0.95        98\n",
-      "        7.0       0.90      0.95      0.92       113\n",
-      "        8.0       0.88      0.95      0.91        96\n",
-      "        9.0       0.82      0.86      0.84       106\n",
+      "        0.0       0.97      1.00      0.99        99\n",
+      "        1.0       0.99      1.00      1.00       105\n",
+      "        2.0       0.99      0.96      0.98       102\n",
+      "        3.0       0.97      0.97      0.97        86\n",
+      "        4.0       0.98      1.00      0.99       104\n",
+      "        5.0       0.99      0.95      0.97        91\n",
+      "        6.0       0.99      0.98      0.98        98\n",
+      "        7.0       0.98      0.96      0.97       113\n",
+      "        8.0       0.98      0.99      0.98        96\n",
+      "        9.0       0.96      0.99      0.98       106\n",
       "\n",
-      "avg / total       0.90      0.90      0.90      1000\n",
+      "avg / total       0.98      0.98      0.98      1000\n",
       "\n",
-      " Classification score for k = 1: 0.898\n",
+      " Classification score for k = 1: 0.98\n",
       "\n",
       "Gaussian blur BOTH training and dev data\n",
       "Classification report for KNeighborsClassifier(algorithm='auto', leaf_size=30, metric='minkowski',\n",
@@ -605,20 +585,20 @@
       "           weights='uniform'):\n",
       "              precision    recall  f1-score   support\n",
       "\n",
-      "        0.0       0.91      0.98      0.94        99\n",
-      "        1.0       0.90      0.99      0.95       105\n",
-      "        2.0       0.97      0.81      0.88       102\n",
-      "        3.0       0.80      0.79      0.80        86\n",
-      "        4.0       0.93      0.84      0.88       104\n",
-      "        5.0       0.90      0.84      0.87        91\n",
-      "        6.0       0.93      0.96      0.94        98\n",
-      "        7.0       0.90      0.92      0.91       113\n",
-      "        8.0       0.92      0.94      0.93        96\n",
-      "        9.0       0.80      0.87      0.83       106\n",
+      "        0.0       0.97      1.00      0.99        99\n",
+      "        1.0       0.99      1.00      1.00       105\n",
+      "        2.0       0.99      0.95      0.97       102\n",
+      "        3.0       0.96      0.95      0.96        86\n",
+      "        4.0       0.98      0.99      0.99       104\n",
+      "        5.0       0.99      0.95      0.97        91\n",
+      "        6.0       1.00      0.99      0.99        98\n",
+      "        7.0       0.98      0.96      0.97       113\n",
+      "        8.0       0.97      0.96      0.96        96\n",
+      "        9.0       0.92      0.99      0.95       106\n",
       "\n",
-      "avg / total       0.90      0.90      0.89      1000\n",
+      "avg / total       0.98      0.97      0.98      1000\n",
       "\n",
-      " Classification score for k = 1: 0.895\n",
+      " Classification score for k = 1: 0.975\n",
       "\n",
       "Gaussian blur dev data only\n",
       "Classification report for KNeighborsClassifier(algorithm='auto', leaf_size=30, metric='minkowski',\n",
@@ -626,20 +606,20 @@
       "           weights='uniform'):\n",
       "              precision    recall  f1-score   support\n",
       "\n",
-      "        0.0       0.91      0.98      0.94        99\n",
-      "        1.0       0.89      1.00      0.94       105\n",
-      "        2.0       0.99      0.79      0.88       102\n",
-      "        3.0       0.77      0.87      0.82        86\n",
-      "        4.0       0.89      0.82      0.85       104\n",
-      "        5.0       0.93      0.84      0.88        91\n",
-      "        6.0       0.94      0.96      0.95        98\n",
-      "        7.0       0.89      0.92      0.90       113\n",
-      "        8.0       0.94      0.88      0.91        96\n",
-      "        9.0       0.78      0.82      0.80       106\n",
+      "        0.0       0.96      1.00      0.98        99\n",
+      "        1.0       1.00      1.00      1.00       105\n",
+      "        2.0       0.98      0.96      0.97       102\n",
+      "        3.0       0.95      0.97      0.96        86\n",
+      "        4.0       0.99      0.98      0.99       104\n",
+      "        5.0       0.97      0.97      0.97        91\n",
+      "        6.0       0.99      0.98      0.98        98\n",
+      "        7.0       0.99      0.98      0.99       113\n",
+      "        8.0       0.98      0.93      0.95        96\n",
+      "        9.0       0.95      1.00      0.98       106\n",
       "\n",
-      "avg / total       0.89      0.89      0.89      1000\n",
+      "avg / total       0.98      0.98      0.98      1000\n",
       "\n",
-      " Classification score for k = 1: 0.888\n",
+      " Classification score for k = 1: 0.977\n",
       "\n"
      ]
     }
@@ -650,14 +630,14 @@
     "    \n",
     "    train_blur = []\n",
     "    dev_blur = []\n",
-    "    for t in mini_train_data:\n",
+    "    for t in train_data:\n",
     "        train_blur.append(ndimage.gaussian_filter(t, sigma=1))\n",
     "    for d in dev_data:\n",
     "        dev_blur.append(ndimage.gaussian_filter(d, sigma=1))\n",
     "    \n",
     "    #pre-process training data only\n",
     "    knn = KNeighborsClassifier(n_neighbors=1, n_jobs=-1)\n",
-    "    knn.fit(train_blur, mini_train_labels)\n",
+    "    knn.fit(train_blur, train_labels)\n",
     "    print(\"Gaussian blur training data only\")\n",
     "    print(\"Classification report for %s:\\n %s\\n Classification score for k = 1: %s\\n\"  \n",
     "          % (knn, classification_report(dev_labels, knn.predict(dev_data)), knn.score(dev_data, dev_labels)))\n",
@@ -668,25 +648,11 @@
     "          % (knn, classification_report(dev_labels, knn.predict(dev_blur)), knn.score(dev_blur, dev_labels)))\n",
     "    # preprocess dev data only\n",
     "    # re-train knn\n",
-    "    knn.fit(mini_train_data, mini_train_labels)\n",
+    "    knn.fit(train_data, train_labels)\n",
     "    print(\"Gaussian blur dev data only\")\n",
     "    print(\"Classification report for %s:\\n %s\\n Classification score for k = 1: %s\\n\"  \n",
     "          % (knn, classification_report(dev_labels, knn.predict(dev_data)), knn.score(dev_data, dev_labels)))    \n",
     "P6()"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "ANSWER:\n",
-    "\n",
-    "I used the ndimage.gaussian_filter provided by the library. I got the following results from applying the gaussian blur: \n",
-    "- Training Only accuracy: 89.8%\n",
-    "- Dev Only accuracy: 88.8%\n",
-    "- Training and Dev Both accuracy 89.5%\n",
-    "\n",
-    "The results for blurring training-only and both training and dev data are better than the 88.8% for k=1 on non-blurred data.\n"
    ]
   },
   {
@@ -698,7 +664,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 40,
+   "execution_count": 29,
    "metadata": {
     "collapsed": false
    },
@@ -707,10 +673,8 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "Classifier: BernoulliNB(alpha=1.0, binarize=0.0, class_prior=None, fit_prior=False) Accuracy score with binarization:0.816 \n",
-      "\n",
-      "Classifier: MultinomialNB(alpha=1.0, class_prior=None, fit_prior=False) Accuracy score with ternarization:0.805 \n",
-      "\n"
+      "Accuracy score with binarization:0.816\n",
+      "Accuracy score with binarization:0.805\n"
      ]
     }
    ],
@@ -750,7 +714,7 @@
     "    for i in dev_data_bin:\n",
     "        i = binarize(i)\n",
     "\n",
-    "    print(\"Classifier: %s Accuracy score with binarization:%s \\n\" % (bnb, bnb.score(dev_data_bin, dev_labels)))\n",
+    "    print(\"Accuracy score with binarization:%s\" % bnb.score(dev_data_bin, dev_labels))\n",
     "    \n",
     "    # BernoulliNB with ternarize\n",
     "    train_data_ter = np.copy(mini_train_data)\n",
@@ -763,7 +727,7 @@
     "    mnb = MultinomialNB(fit_prior=False)\n",
     "    mnb.fit(train_data_ter, mini_train_labels)\n",
     "\n",
-    "    print(\"Classifier: %s Accuracy score with ternarization:%s \\n\" % (mnb, mnb.score(dev_data_ter, dev_labels)))\n",
+    "    print(\"Accuracy score with binarization:%s\" % mnb.score(dev_data_ter, dev_labels))\n",
     "\n",
     "P7()    "
    ]
@@ -772,9 +736,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "ANSWER:\n",
-    "\n",
-    "The multinomial version (accuracy: 80.5%) does not improve the results versus the bernoulli version (accuracy: 81.6%) because, I suppose, we are adding noise by re-coding pixels as gray."
+    "ANSWER:\n"
    ]
   },
   {
@@ -830,12 +792,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "ANSWER:\n",
-    "\n",
-    "The best value for alpha is 0.01 which results in an accuracy of 82.1%.\n",
-    "The accuracy is 9.2% when alpha is 0.\n",
-    "\n",
-    "I'm not sure how a value of 0.01 is related to Lidstone smoothing but, per the scikit-learn docs, that's what is happening here. \"Lidstone\" smoothing applied at an alpha value of 0.01 gives the best result in this case. According to the docs, the smoothing prevents 0 probabilities from being used in comparisons."
+    "ANSWER:\n"
    ]
   },
   {
@@ -849,7 +806,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 42,
+   "execution_count": 31,
    "metadata": {
     "collapsed": false
    },
@@ -873,11 +830,11 @@
     "    gnb_theta = gnb.theta_.copy()\n",
     "    gnb_sigma = gnb.sigma_.copy()\n",
     "    \n",
-    "    # change theta_ and sigma_\n",
-    "    # manually try a few different values and pick the ~best\n",
+    "    # change theta and sigma\n",
+    "    # try a few different values and pick the ~best\n",
     "    for i in range(len(gnb.theta_)):\n",
     "        gnb.theta_[i] -= 0.1\n",
-    "    for i in range(len(gnb.sigma_)):\n",
+    "    for i in range(len(gnb.theta_)):\n",
     "        gnb.sigma_[i] += 0.05\n",
     "    \n",
     "    print(\"Gaussian with modified theta and sigma: %s\" % gnb.score(dev_data, dev_labels))\n",
@@ -889,10 +846,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "ANSWER:\n",
-    "GaussianNB yields a low accuracy of 62.1% without modifying theta_ and signma_. theta_ is the mean of each feature per class and sigma_ is the variance of each feature per class.\n",
-    "\n",
-    "I tried various values for theta_ and sigma_ but what worked best is hard coded  above. Reducing the mean of each feature per class by 0.1 and increasing the variance by 0.05 resulted in an accuracy of 80.6%."
+    "ANSWER:\n"
    ]
   },
   {
@@ -949,9 +903,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "ANSWER:\n",
-    "\n",
-    "The generated digits look fuzzy and some barely look like the numbers they represent. However, examples of each digit appear to be more homogeneous when compared to examples of hand-written digits."
+    "ANSWER:\n"
    ]
   },
   {
@@ -967,7 +919,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 45,
+   "execution_count": 33,
    "metadata": {
     "collapsed": false
    },
@@ -1018,23 +970,26 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "ANSWER:\n",
-    "\n",
-    "The results above indicated that the classifier is weakly calibrated. The accuracy increases linearly with posterior probability (thus eliminating poorly calibrated). However, the accuracy is not nearly 90% when the posterior probability is 0.9. Therefore, weakly calibrated appears to be the best choice here."
+    "ANSWER:\n"
    ]
   },
   {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "(12) EXTRA CREDIT\n",
-    "\n",
-    "Try designing extra features to see if you can improve the performance of Naive Bayes on the dev set. Here are a few ideas to get you started:\n",
-    "- Try summing the pixel values in each row and each column.\n",
-    "- Try counting the number of enclosed regions; 8 usually has 2 enclosed regions, 9 usually has 1, and 7 usually has 0.\n",
-    "\n",
-    "Make sure you comment your code well!"
-   ]
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
   }
  ],
  "metadata": {
